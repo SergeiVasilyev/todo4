@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tehtavat',
 ]
 
 MIDDLEWARE = [
@@ -103,8 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'fi'
+LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'fi'
 
 TIME_ZONE = 'Europe/Helsinki'
 
