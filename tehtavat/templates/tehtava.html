@@ -8,6 +8,16 @@
 </head>
 <body>
     <h1 class="otsikko">{{ tehtava }}</h1>
+    {% if tehtava.tehty %}
+        <p><b>Tehty!</b></p>  
+    {% else %}
+        <p><form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Merkitse tehdyksi"/>
+            <input type="hidden" name="toiminto" value="merkitse_tehdyksi"/>
+        </form></p>
+    {% endif %}
+    
     <p>Kategoria: 
         {% if tehtava.kategoria %}
             {{ tehtava.kategoria }}
@@ -15,7 +25,7 @@
             &mdash;
         {% endif %}
         <!-- 123&nbsp;€ nbsp; не позволяет разбить текст! -->
-        </p>
-    <a href="{% url 'etusivu' %}">etusivu </a>
+    </p>
+    <p><a href="{% url 'etusivu' %}">etusivu </a></p>
 </body>
 </html>

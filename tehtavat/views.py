@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.shortcuts import render
 
 from .models import Tehtava
@@ -17,6 +17,17 @@ def tehatava_sivu(request, id):
     except Tehtava.DoesNotExist:
         return HttpResponseNotFound(f"Tehtava {id} ei löydy")
     context = {"tehtava": tehtava}
+
+    if request.method == "POST":
+        print("jee")
+        toiminto = request.POST.get("toiminto")
+        if toiminto == "merkitse_tehdyksi":
+            print("Merkitaan tehdyksi")
+            tehtava.tehty = True
+            tehtava.save()
+        else:
+            return HttpResponseBadRequest("Tuntematon toiminto")
+
     return render(request, "tehtava.html", context)
     # return HttpResponse(f"Tehtava {id} on {tehtava}")
 
