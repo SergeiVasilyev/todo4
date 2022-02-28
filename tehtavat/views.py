@@ -1,8 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from .models import Tehtava
+
 def etusivu(request):
-    response = render(request, "etusivu.html")
+    tiedot = {
+        "tehtavat": Tehtava.objects.all(),
+    }
+    response = render(request, "etusivu.html", tiedot)
     return response
 
 def tietoa(request):

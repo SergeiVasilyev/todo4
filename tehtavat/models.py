@@ -12,11 +12,11 @@ class Kategoria(models.Model):
 
 class Tehtava(models.Model):
     otsikko = models.CharField(max_length=200)
-    kategoria = models.ForeignKey(Kategoria, on_delete=models.RESTRICT, null=True)
+    kategoria = models.ForeignKey(Kategoria, on_delete=models.RESTRICT, null=True, blank=True)
 
     def __str__(self):
-        return super().__str__()
-        # return self.otsikko
+        # return super().__str__()
+        return self.otsikko
 
 
 

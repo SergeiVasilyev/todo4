@@ -8,7 +8,16 @@
 </head>
 <body>
     <h1 class="otsikko">Todo-ohjelma</h1>
-    <a href="{% url 'tietoa' %}">tietoa</a>
-    <p>skdlksndb skdbnlsdb;</p>
+    <a href="{% url 'tietoa' %}">tietoa </a>
+    <ul>
+        {% for tehtava in tehtavat %}
+        <li>
+            {{ tehtava }}
+            {% if tehtava.kategoria %}
+            (Kategoria:  {{ tehtava.kategoria }})
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

@@ -12,6 +12,7 @@
             "args": [
                 "runserver"
             ],
+            "justMyCode": false, //added чтобы работал dubug 
             "django": true
         }
     ]
