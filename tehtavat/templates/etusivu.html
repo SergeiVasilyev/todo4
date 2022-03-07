@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etusivu</title>
-</head>
-<body>
-    <h1 class="otsikko">Todo-ohjelma</h1>
-    <a href="{% url 'tietoa' %}">tietoa </a>
-    <ul>
-        {% for tehtava in tehtavat %}
-        <li>
-            <a href="{% url 'tehtava' tehtava.id %}" style="color: lightcoral">
-                {{ tehtava }}
-                {% if tehtava.kategoria %}
-                    (Kategoria:  {{ tehtava.kategoria }})
-                {% endif %}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Todo etusivu{% endblock %}
+
+{% block heading %}Todo-ohjelma{% endblock %}
+
+{% block content %}
+<a href="{% url 'tietoa' %}">tietoa </a>
+<ul>
+    {% for tehtava in tehtavat %}
+    <li>
+        <a href="{% url 'tehtava' tehtava.id %}" style="color: lightcoral">
+            {{ tehtava }}
+            {% if tehtava.kategoria %}
+                (Kategoria:  {{ tehtava.kategoria }})
+            {% endif %}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
